@@ -1,0 +1,29 @@
+@ECHO OFF
+del scannerRule.yy.obj
+del parserRule.tab.obj
+del compiler.obj
+
+c:\Compiler\win_flex.exe -d --nounistd -oscannerRule.yy.cpp scannerRule.l
+c:\Compiler\win_bison.exe  -d -oparserRule.tab.cpp parserRule.y
+cl -c AST.cpp
+cl -c scannerRule.yy.cpp
+cl -c parserRule.tab.cpp
+cl -o nong.exe compiler.cpp parserRule.tab.obj scannerRule.yy.obj AST.obj
+@echo:
+@echo:
+@echo:
+ECHO "****** Start ******"
+@echo:
+@echo:
+@echo:
+
+nong.exe AddressBookTest1.txt
+
+@echo:
+@echo:
+@echo:
+ECHO "****** Done ******\n\n"
+
+
+
+

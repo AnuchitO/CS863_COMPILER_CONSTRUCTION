@@ -1,0 +1,6 @@
+AddressBook(Worawan){
+	Name: Daniel
+	Surname: Wong
+	Email: dan.wong@gmail.com
+	Tel: +4413155557
+}

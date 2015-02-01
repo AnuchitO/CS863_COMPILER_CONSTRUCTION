@@ -1,0 +1,25 @@
+Bison = bison
+Flex = flex
+default: scanner
+
+scannerRule.yy.cpp : scannerRule.l
+	${Flex} -d --nounistd -oscannerRule.yy.cpp scannerRule.l
+	$c:\Compiler\win_flex.exe -d --nounistd -oscannerRule.yy.cpp scannerRule.l
+parserRule.tab.cpp : parserRule.y
+	${Bison} -d -oparserRule.tab.cpp parserRule.y
+	$c:\Compiler\win_bison.exe  -d -oparserRule.tab.cpp parserRule.y
+
+scanner : scannerRule.yy.cpp parserRule.tab.cpp 
+$cl -c AST.cpp
+$cl -c scannerRule.yy.cpp
+$cl -c parserRule.tab.cpp
+
+$cl -o nong.exe compiler.cpp parserRule.tab.obj scannerRule.yy.obj AST.obj
+
+$nong.exe AddressBook.txt
+
+
+
+
+
+
