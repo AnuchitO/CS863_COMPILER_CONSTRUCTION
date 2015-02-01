@@ -44,23 +44,23 @@ int yylex (YYSTYPE * yylval_param , yyscan_t yyscanner);
 %token IF
 
 %%
-program 	: statement {cout << "statement" << endl;} 
-			| program statement {cout << "program statement" << endl;} 
+program 	: statement {cout << "1.statement" << endl;} 
+			| program statement {cout << "2.program statement" << endl;} 
 			;
 
-statement 	: assignStmt {cout << "assignStmt" << endl;} 
-			| ifStmt {cout << "ifStmt" << endl;} 
+statement 	: assignStmt {cout << "3.assignStmt" << endl;} 
+			| ifStmt {cout << "4.ifStmt" << endl;} 
 			;
 
-assignStmt 	: ID EQ expr SEM {cout << "ID EQ expr SEM" << endl;}
+assignStmt 	: ID EQ expr SEM {cout << "5.ID EQ expr SEM" << endl;}
 			;
 
-ifStmt 		: IF ORB expr CRB statement {cout << "IF ORB expr CRB statement" << endl;}
+ifStmt 		: IF ORB expr CRB statement {cout << "6.IF ORB expr CRB statement" << endl;}
 			;
 
-expr 		: ID {cout << "ID" << endl;}
-			| INT {cout << "INT" << endl;}
-			| expr ADD expr {cout << "expr ADD expr" << endl;}
+expr 		: ID {cout << "7.ID" << endl;}
+			| INT {cout << "8.INT" << endl;}
+			| expr ADD expr {cout << "9.expr ADD expr" << endl;}
 			;
 
 

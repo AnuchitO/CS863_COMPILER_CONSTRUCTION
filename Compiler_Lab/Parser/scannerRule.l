@@ -15,7 +15,8 @@ DIGIT    [0-9]
 CHAR     [A-Za-z]
 
 %%
-[\n\r\t] {}
+[\/\/].*\n?		{}
+[ \r\t\c] {}
 ":"		{return COL;}
 "("  	{return ORB;}
 ")" 	{return CRB;}

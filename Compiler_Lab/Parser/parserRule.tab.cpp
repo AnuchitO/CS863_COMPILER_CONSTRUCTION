@@ -1390,55 +1390,55 @@ yyreduce:
         case 2:
 /* Line 1792 of yacc.c  */
 #line 47 "parserRule.y"
-    {cout << "statement" << endl;}
+    {cout << "1.statement" << endl;}
     break;
 
   case 3:
 /* Line 1792 of yacc.c  */
 #line 48 "parserRule.y"
-    {cout << "program statement" << endl;}
+    {cout << "2.program statement" << endl;}
     break;
 
   case 4:
 /* Line 1792 of yacc.c  */
 #line 51 "parserRule.y"
-    {cout << "assignStmt" << endl;}
+    {cout << "3.assignStmt" << endl;}
     break;
 
   case 5:
 /* Line 1792 of yacc.c  */
 #line 52 "parserRule.y"
-    {cout << "ifStmt" << endl;}
+    {cout << "4.ifStmt" << endl;}
     break;
 
   case 6:
 /* Line 1792 of yacc.c  */
 #line 55 "parserRule.y"
-    {cout << "ID EQ expr SEM" << endl;}
+    {cout << "5.ID EQ expr SEM" << endl;}
     break;
 
   case 7:
 /* Line 1792 of yacc.c  */
 #line 58 "parserRule.y"
-    {cout << "IF ORB expr CRB statement" << endl;}
+    {cout << "6.IF ORB expr CRB statement" << endl;}
     break;
 
   case 8:
 /* Line 1792 of yacc.c  */
 #line 61 "parserRule.y"
-    {cout << "ID" << endl;}
+    {cout << "7.ID" << endl;}
     break;
 
   case 9:
 /* Line 1792 of yacc.c  */
 #line 62 "parserRule.y"
-    {cout << "INT" << endl;}
+    {cout << "8.INT" << endl;}
     break;
 
   case 10:
 /* Line 1792 of yacc.c  */
 #line 63 "parserRule.y"
-    {cout << "expr ADD expr" << endl;}
+    {cout << "9.expr ADD expr" << endl;}
     break;
 
 
