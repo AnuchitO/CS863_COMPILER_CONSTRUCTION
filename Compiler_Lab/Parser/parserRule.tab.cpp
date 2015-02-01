@@ -122,13 +122,15 @@ extern int yydebug;
    enum yytokentype {
      INT = 258,
      ID = 259,
-     ADDRBOOK = 260,
-     OPEN_BRACES = 261,
-     CLOSE_BRACES = 262,
-     OPEN_CURLY_BRACKETS = 263,
-     CLOSE_CURLY_BRACKETS = 264,
-     NAME = 265,
-     COL = 266
+     EQ = 260,
+     SEM = 261,
+     ORB = 262,
+     CRB = 263,
+     OP = 264,
+     CP = 265,
+     COL = 266,
+     ADD = 267,
+     IF = 268
    };
 #endif
 
@@ -144,7 +146,7 @@ typedef union YYSTYPE
 
 
 /* Line 387 of yacc.c  */
-#line 148 "parserRule.tab.cpp"
+#line 150 "parserRule.tab.cpp"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -171,7 +173,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 175 "parserRule.tab.cpp"
+#line 177 "parserRule.tab.cpp"
 
 #ifdef short
 # undef short
@@ -389,22 +391,22 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  4
+#define YYFINAL  9
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   11
+#define YYLAST   18
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  12
+#define YYNTOKENS  14
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  3
+#define YYNNTS  6
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  3
+#define YYNRULES  10
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  13
+#define YYNSTATES  20
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   266
+#define YYMAXUTOK   268
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -438,7 +440,7 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9,    10,    11
+       5,     6,     7,     8,     9,    10,    11,    12,    13
 };
 
 #if YYDEBUG
@@ -446,20 +448,24 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,    11
+       0,     0,     3,     5,     8,    10,    12,    17,    23,    25,
+      27
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      13,     0,    -1,     5,     6,     4,     7,     8,    14,     9,
-      -1,    10,    11,     4,    -1
+      15,     0,    -1,    16,    -1,    15,    16,    -1,    17,    -1,
+      18,    -1,     4,     5,    19,     6,    -1,    13,     7,    19,
+       8,    16,    -1,     4,    -1,     3,    -1,    19,    12,    19,
+      -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    44,    44,    45
+       0,    47,    47,    48,    51,    52,    55,    58,    61,    62,
+      63
 };
 #endif
 
@@ -468,9 +474,9 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "INT", "ID", "ADDRBOOK", "OPEN_BRACES",
-  "CLOSE_BRACES", "OPEN_CURLY_BRACKETS", "CLOSE_CURLY_BRACKETS", "NAME",
-  "COL", "$accept", "program", "list", YY_NULL
+  "$end", "error", "$undefined", "INT", "ID", "EQ", "SEM", "ORB", "CRB",
+  "OP", "CP", "COL", "ADD", "IF", "$accept", "program", "statement",
+  "assignStmt", "ifStmt", "expr", YY_NULL
 };
 #endif
 
@@ -480,20 +486,22 @@ static const char *const yytname[] =
 static const yytype_uint16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266
+     265,   266,   267,   268
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    12,    13,    14
+       0,    14,    15,    15,    16,    16,    17,    18,    19,    19,
+      19
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     7,     3
+       0,     2,     1,     2,     1,     1,     4,     5,     1,     1,
+       3
 };
 
 /* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
@@ -501,29 +509,29 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     0,     0,     0,     1,     0,     0,     0,     0,     0,
-       0,     2,     3
+       0,     0,     0,     0,     2,     4,     5,     0,     0,     1,
+       3,     9,     8,     0,     0,     6,     0,     0,    10,     7
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     9
+      -1,     3,     4,     5,     6,    13
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -7
+#define YYPACT_NINF -8
 static const yytype_int8 yypact[] =
 {
-      -5,    -4,     1,    -1,    -7,    -3,    -2,     0,    -6,     2,
-       3,    -7,    -7
+      -1,     0,     9,     2,    -8,    -8,    -8,     4,     4,    -8,
+      -8,    -8,    -8,    -2,     5,    -8,     4,    -1,     6,    -8
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -7,    -7,    -7
+      -8,    -8,    -3,    -8,    -8,    -7
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -532,28 +540,28 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       1,     4,     3,     5,     6,    10,     7,    12,     0,     0,
-       8,    11
+      10,    14,     9,     1,    15,     7,     1,    11,    12,    18,
+      16,     0,     2,    17,    19,     2,     8,    16,    16
 };
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-7)))
+  (!!((Yystate) == (-8)))
 
 #define yytable_value_is_error(Yytable_value) \
   YYID (0)
 
 static const yytype_int8 yycheck[] =
 {
-       5,     0,     6,     4,     7,    11,     8,     4,    -1,    -1,
-      10,     9
+       3,     8,     0,     4,     6,     5,     4,     3,     4,    16,
+      12,    -1,    13,     8,    17,    13,     7,    12,    12
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     5,    13,     6,     0,     4,     7,     8,    10,    14,
-      11,     9,     4
+       0,     4,    13,    15,    16,    17,    18,     5,     7,     0,
+      16,     3,     4,    19,    19,     6,    12,     8,    19,    16
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1381,19 +1389,61 @@ yyreduce:
     {
         case 2:
 /* Line 1792 of yacc.c  */
-#line 44 "parserRule.y"
-    {ir->setname((yyvsp[(3) - (7)].charstr));}
+#line 47 "parserRule.y"
+    {cout << "statement" << endl;}
     break;
 
   case 3:
 /* Line 1792 of yacc.c  */
-#line 45 "parserRule.y"
-    {cout << (yyvsp[(3) - (3)].charstr) << endl ;}
+#line 48 "parserRule.y"
+    {cout << "program statement" << endl;}
+    break;
+
+  case 4:
+/* Line 1792 of yacc.c  */
+#line 51 "parserRule.y"
+    {cout << "assignStmt" << endl;}
+    break;
+
+  case 5:
+/* Line 1792 of yacc.c  */
+#line 52 "parserRule.y"
+    {cout << "ifStmt" << endl;}
+    break;
+
+  case 6:
+/* Line 1792 of yacc.c  */
+#line 55 "parserRule.y"
+    {cout << "ID EQ expr SEM" << endl;}
+    break;
+
+  case 7:
+/* Line 1792 of yacc.c  */
+#line 58 "parserRule.y"
+    {cout << "IF ORB expr CRB statement" << endl;}
+    break;
+
+  case 8:
+/* Line 1792 of yacc.c  */
+#line 61 "parserRule.y"
+    {cout << "ID" << endl;}
+    break;
+
+  case 9:
+/* Line 1792 of yacc.c  */
+#line 62 "parserRule.y"
+    {cout << "INT" << endl;}
+    break;
+
+  case 10:
+/* Line 1792 of yacc.c  */
+#line 63 "parserRule.y"
+    {cout << "expr ADD expr" << endl;}
     break;
 
 
 /* Line 1792 of yacc.c  */
-#line 1397 "parserRule.tab.cpp"
+#line 1447 "parserRule.tab.cpp"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1625,7 +1675,7 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 47 "parserRule.y"
+#line 67 "parserRule.y"
 
 int yyerror (adb::ast* ir, yyscan_t yyscanner, const char* msg)
 {

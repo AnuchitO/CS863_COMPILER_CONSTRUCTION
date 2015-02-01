@@ -32,17 +32,37 @@ int yylex (YYSTYPE * yylval_param , yyscan_t yyscanner);
 
 %token <int> INT
 %token <charstr> ID
-%token ADDRBOOK
-%token OPEN_BRACES
-%token CLOSE_BRACES
-%token OPEN_CURLY_BRACKETS
-%token CLOSE_CURLY_BRACKETS
-%token NAME
+%token EQ
+%token SEM
+
+%token ORB
+%token CRB
+%token OP
+%token CP
 %token COL
+%token ADD
+%token IF
 
 %%
-program :ADDRBOOK OPEN_BRACES ID CLOSE_BRACES OPEN_CURLY_BRACKETS list CLOSE_CURLY_BRACKETS {ir->setname($3);}
-list : NAME COL ID {cout << $3 << endl ;}
+program 	: statement {cout << "statement" << endl;} 
+			| program statement {cout << "program statement" << endl;} 
+			;
+
+statement 	: assignStmt {cout << "assignStmt" << endl;} 
+			| ifStmt {cout << "ifStmt" << endl;} 
+			;
+
+assignStmt 	: ID EQ expr SEM {cout << "ID EQ expr SEM" << endl;}
+			;
+
+ifStmt 		: IF ORB expr CRB statement {cout << "IF ORB expr CRB statement" << endl;}
+			;
+
+expr 		: ID {cout << "ID" << endl;}
+			| INT {cout << "INT" << endl;}
+			| expr ADD expr {cout << "expr ADD expr" << endl;}
+			;
+
 
 %%
 int yyerror (adb::ast* ir, yyscan_t yyscanner, const char* msg)

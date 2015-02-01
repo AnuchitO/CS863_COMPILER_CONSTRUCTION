@@ -17,17 +17,19 @@ CHAR     [A-Za-z]
 %%
 [\n\r\t] {}
 ":"		{return COL;}
-"("  	{return OPEN_BRACES;}
-")" 	{return CLOSE_BRACES;}
-"{" 	{return OPEN_CURLY_BRACKETS;}
-"}" 	{return CLOSE_CURLY_BRACKETS;}
-"name"	{return NAME;}
-"AddressBook" {return ADDRBOOK;}
+"("  	{return ORB;}
+")" 	{return CRB;}
+"{" 	{return OP;}
+"}" 	{return CP;}
+"="		{return EQ;}
+";" 	{return SEM;}
+"+" 	{return ADD;}
+"if"	{return IF;}
 
-{DIGIT}+		{
+{DIGIT}		{
 			yylval_param->num = atoi(_strdup(yytext));
 			return INT;}
-({CHAR}|_)({CHAR}|_|{DIGIT})*	{
+[a-c|i-k|n|x|y|z]	{
 			yylval_param->charstr = _strdup(yytext);
 			return ID;}
 

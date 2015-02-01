@@ -48,13 +48,15 @@ extern int yydebug;
    enum yytokentype {
      INT = 258,
      ID = 259,
-     ADDRBOOK = 260,
-     OPEN_BRACES = 261,
-     CLOSE_BRACES = 262,
-     OPEN_CURLY_BRACKETS = 263,
-     CLOSE_CURLY_BRACKETS = 264,
-     NAME = 265,
-     COL = 266
+     EQ = 260,
+     SEM = 261,
+     ORB = 262,
+     CRB = 263,
+     OP = 264,
+     CP = 265,
+     COL = 266,
+     ADD = 267,
+     IF = 268
    };
 #endif
 
@@ -70,7 +72,7 @@ typedef union YYSTYPE
 
 
 /* Line 2058 of yacc.c  */
-#line 74 "parserRule.tab.hpp"
+#line 76 "parserRule.tab.hpp"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
