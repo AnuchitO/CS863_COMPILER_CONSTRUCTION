@@ -1,6 +1,4 @@
 // sdfsdf123
-a = 1    ;   if   (     a     +     1    )        
-//sdfsdf
-b  =   2   ;
-//sdfsdf
-//  sdfs 1651 1 53df
+a = 1    ;   if   (     a     +     1    )  b  =   2   ;
+else
+b=1;
