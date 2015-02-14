@@ -550,11 +550,7 @@ static yyconst flex_int16_t yy_rule_linenum[14] =
 #include "parserRule.tab.hpp"
 using namespace std;
 
-<<<<<<< HEAD
 #line 554 "scannerRule.yy.cpp"
-=======
-#line 558 "scannerRule.yy.cpp"
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 
 #define INITIAL 0
 
@@ -847,11 +843,7 @@ YY_DECL
 /* %% [7.0] user's declarations go here */
 #line 17 "scannerRule.l"
 
-<<<<<<< HEAD
 #line 847 "scannerRule.yy.cpp"
-=======
-#line 851 "scannerRule.yy.cpp"
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 
     yylval = yylval_param;
 
@@ -1038,11 +1030,7 @@ YY_RULE_SETUP
 #line 39 "scannerRule.l"
 ECHO;
 	YY_BREAK
-<<<<<<< HEAD
 #line 1034 "scannerRule.yy.cpp"
-=======
-#line 1023 "scannerRule.yy.cpp"
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2347,10 +2335,6 @@ void yyfree (void * ptr , yyscan_t yyscanner)
 
 /* %ok-for-header */
 
-<<<<<<< HEAD
 #line 39 "scannerRule.l"
-=======
-#line 36 "scannerRule.l"
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 
 

@@ -47,7 +47,6 @@ extern int yydebug;
   {
     INT = 258,
     ID = 259,
-<<<<<<< HEAD
     EQ = 260,
     SEM = 261,
     ORB = 262,
@@ -57,15 +56,6 @@ extern int yydebug;
     COL = 266,
     ADD = 267,
     IF = 268
-=======
-    ADDRBOOK = 260,
-    OPEN_BRACES = 261,
-    CLOSE_BRACES = 262,
-    OPEN_CURLY_BRACKETS = 263,
-    CLOSE_CURLY_BRACKETS = 264,
-    NAME = 265,
-    COL = 266
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
   };
 #endif
 
@@ -79,11 +69,7 @@ union YYSTYPE
   char* charstr;
   int   num;
 
-<<<<<<< HEAD
 #line 73 "parserRule.tab.hpp" /* yacc.c:1909  */
-=======
-#line 71 "parserRule.tab.hpp" /* yacc.c:1909  */
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1

@@ -119,13 +119,15 @@ extern int yydebug;
   {
     INT = 258,
     ID = 259,
-    ADDRBOOK = 260,
-    OPEN_BRACES = 261,
-    CLOSE_BRACES = 262,
-    OPEN_CURLY_BRACKETS = 263,
-    CLOSE_CURLY_BRACKETS = 264,
-    NAME = 265,
-    COL = 266
+    EQ = 260,
+    SEM = 261,
+    ORB = 262,
+    CRB = 263,
+    OP = 264,
+    CP = 265,
+    COL = 266,
+    ADD = 267,
+    IF = 268
   };
 #endif
 
@@ -139,8 +141,7 @@ union YYSTYPE
   char* charstr;
   int   num;
 
-#line 143 "parserRule.tab.cpp" /* yacc.c:355  */
-
+#line 145 "parserRule.tab.cpp" /* yacc.c:355  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
@@ -154,7 +155,7 @@ int yyparse (adb::ast *ir, yyscan_t yyscanner);
 
 /* Copy the second part of user declarations.  */
 
-#line 157 "parserRule.tab.cpp" /* yacc.c:358  */
+#line 159 "parserRule.tab.cpp" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -403,15 +404,9 @@ union yyalloc
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  6
 /* YYNRULES -- Number of rules.  */
-<<<<<<< HEAD
 #define YYNRULES  10
 /* YYNSTATES -- Number of states.  */
 #define YYNSTATES  20
-=======
-#define YYNRULES  3
-/* YYNSTATES -- Number of states.  */
-#define YYNSTATES  13
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
@@ -468,15 +463,9 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-<<<<<<< HEAD
   "$end", "error", "$undefined", "INT", "ID", "EQ", "SEM", "ORB", "CRB",
   "OP", "CP", "COL", "ADD", "IF", "$accept", "program", "statement",
   "assignStmt", "ifStmt", "expr", YY_NULLPTR
-=======
-  "$end", "error", "$undefined", "INT", "ID", "ADDRBOOK", "OPEN_BRACES",
-  "CLOSE_BRACES", "OPEN_CURLY_BRACKETS", "CLOSE_CURLY_BRACKETS", "NAME",
-  "COL", "$accept", "program", "list", YY_NULLPTR
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 };
 #endif
 
@@ -490,7 +479,6 @@ static const yytype_uint16 yytoknum[] =
 };
 # endif
 
-<<<<<<< HEAD
 #define YYPACT_NINF -8
 
 #define yypact_value_is_default(Yystate) \
@@ -520,35 +508,10 @@ static const yytype_uint8 yydefact[] =
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
-=======
-#define YYPACT_NINF -7
-
-#define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-7)))
-
-#define YYTABLE_NINF -1
-
-#define yytable_value_is_error(Yytable_value) \
-  0
-
-  /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
-     STATE-NUM.  */
-static const yytype_int8 yypact[] =
-{
-      -5,    -4,     1,    -1,    -7,    -3,    -2,     0,    -6,     2,
-       3,    -7,    -7
-};
-
-  /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
-     Performed when YYTABLE does not specify something else to do.  Zero
-     means the default is an error.  */
-static const yytype_uint8 yydefact[] =
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 {
       -8,    -8,    -3,    -8,    -8,    -7
 };
 
-<<<<<<< HEAD
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
@@ -573,68 +536,25 @@ static const yytype_int8 yycheck[] =
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
-=======
-  /* YYPGOTO[NTERM-NUM].  */
-static const yytype_int8 yypgoto[] =
-{
-      -7,    -7,    -7
-};
-
-  /* YYDEFGOTO[NTERM-NUM].  */
-static const yytype_int8 yydefgoto[] =
-{
-      -1,     2,     9
-};
-
-  /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
-     positive, shift that token.  If negative, reduce the rule whose
-     number is the opposite.  If YYTABLE_NINF, syntax error.  */
-static const yytype_uint8 yytable[] =
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 {
        0,     4,    13,    15,    16,    17,    18,     5,     7,     0,
       16,     3,     4,    19,    19,     6,    12,     8,    19,    16
 };
 
-<<<<<<< HEAD
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
-=======
-static const yytype_int8 yycheck[] =
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 {
        0,    14,    15,    15,    16,    16,    17,    18,    19,    19,
       19
 };
 
-<<<<<<< HEAD
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
-=======
-  /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
-     symbol of state STATE-NUM.  */
-static const yytype_uint8 yystos[] =
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 {
        0,     2,     1,     2,     1,     1,     4,     5,     1,     1,
        3
 };
 
-<<<<<<< HEAD
-=======
-  /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
-static const yytype_uint8 yyr1[] =
-{
-       0,    12,    13,    14
-};
-
-  /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
-static const yytype_uint8 yyr2[] =
-{
-       0,     2,     7,     3
-};
-
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 
 #define yyerrok         (yyerrstatus = 0)
 #define yyclearin       (yychar = YYEMPTY)
@@ -684,7 +604,6 @@ do {                                            \
   if (yydebug)                                  \
     YYFPRINTF Args;                             \
 } while (0)
-<<<<<<< HEAD
 
 /* This macro is provided for backward compatibility. */
 #ifndef YY_LOCATION_PRINT
@@ -704,27 +623,6 @@ do {                                                                      \
 } while (0)
 
 
-=======
-
-/* This macro is provided for backward compatibility. */
-#ifndef YY_LOCATION_PRINT
-# define YY_LOCATION_PRINT(File, Loc) ((void) 0)
-#endif
-
-
-# define YY_SYMBOL_PRINT(Title, Type, Value, Location)                    \
-do {                                                                      \
-  if (yydebug)                                                            \
-    {                                                                     \
-      YYFPRINTF (stderr, "%s ", Title);                                   \
-      yy_symbol_print (stderr,                                            \
-                  Type, Value, ir, yyscanner); \
-      YYFPRINTF (stderr, "\n");                                           \
-    }                                                                     \
-} while (0)
-
-
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 /*----------------------------------------.
 | Print this symbol's value on YYOUTPUT.  |
 `----------------------------------------*/
@@ -1339,7 +1237,6 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-<<<<<<< HEAD
 #line 47 "parserRule.y" /* yacc.c:1646  */
     {cout << "1.statement" << endl;}
 #line 1243 "parserRule.tab.cpp" /* yacc.c:1646  */
@@ -1379,17 +1276,6 @@ yyreduce:
 #line 61 "parserRule.y" /* yacc.c:1646  */
     {cout << "7.ID" << endl;}
 #line 1279 "parserRule.tab.cpp" /* yacc.c:1646  */
-=======
-#line 44 "parserRule.y" /* yacc.c:1646  */
-    {ir->setname((yyvsp[-4].charstr));}
-#line 1238 "parserRule.tab.cpp" /* yacc.c:1646  */
-    break;
-
-  case 3:
-#line 45 "parserRule.y" /* yacc.c:1646  */
-    {cout << (yyvsp[0].charstr) << endl ;}
-#line 1244 "parserRule.tab.cpp" /* yacc.c:1646  */
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
     break;
 
   case 9:
@@ -1404,12 +1290,8 @@ yyreduce:
 #line 1291 "parserRule.tab.cpp" /* yacc.c:1646  */
     break;
 
-<<<<<<< HEAD
 
 #line 1295 "parserRule.tab.cpp" /* yacc.c:1646  */
-=======
-#line 1248 "parserRule.tab.cpp" /* yacc.c:1646  */
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1637,11 +1519,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-<<<<<<< HEAD
 #line 67 "parserRule.y" /* yacc.c:1906  */
-=======
-#line 47 "parserRule.y" /* yacc.c:1906  */
->>>>>>> e8a02d5c73238ab1286a26ee060605f1267a0b1a
 
 int yyerror (adb::ast* ir, yyscan_t yyscanner, const char* msg)
 {
