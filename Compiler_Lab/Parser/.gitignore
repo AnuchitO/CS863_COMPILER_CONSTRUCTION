@@ -1,0 +1,5 @@
+AST.obj
+compiler.obj
+parserRule.tab.obj
+scannerRule.yy.obj
+
