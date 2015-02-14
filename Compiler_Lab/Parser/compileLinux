@@ -1,0 +1,13 @@
+#!/bin/bash
+clear
+echo "/****** Start Process ******/"
+flex -d --nounistd -oscannerRule.yy.cpp scannerRule.l
+bison -d -oparserRule.tab.cpp parserRule.y
+
+g++ -c scannerRule.yy.cpp -o scannerRule.yy.obj
+g++ -c AST.cpp -o AST.obj
+g++ -c parserRule.tab.cpp -o parserRule.tab.obj
+g++ -o nong compiler.cpp parserRule.tab.obj scannerRule.yy.obj AST.obj
+./nong AddressBookTest1.txt
+echo "/****** End Process ******/"
+

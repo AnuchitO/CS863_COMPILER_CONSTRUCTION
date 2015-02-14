@@ -25,10 +25,10 @@ CHAR     [A-Za-z]
 "AddressBook" {return ADDRBOOK;}
 
 {DIGIT}+		{
-			yylval_param->num = atoi(_strdup(yytext));
+			yylval_param->num = atoi(strdup(yytext));
 			return INT;}
 ({CHAR}|_)({CHAR}|_|{DIGIT})*	{
-			yylval_param->charstr = _strdup(yytext);
+			yylval_param->charstr = strdup(yytext);
 			return ID;}
 
 
