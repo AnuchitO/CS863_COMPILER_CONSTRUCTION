@@ -1,27 +1,53 @@
 #!/bin/bash
 clear
+
+clean(){
+	echo -e "\n------------------------------------" 
+	echo    ":::: Clean ::::" 
+	echo -e "------------------------------------\n" 
+}
+
+compile(){
+	echo -e "\n------------------------------------" 
+	echo 	":::: Compile ::::" 
+	echo -e "------------------------------------\n" 
+}
+
+run(){
+	echo -e "\n------------------------------------" 
+	echo 	":::: RUN ::::" 
+	echo -e "------------------------------------\n" 
+}
+
+while [ $# -gt 0 ]
+do
+    case "$1" in
+    	-o)  
+			echo "Test -run 2: "$2; shift ;;
+        clean)  
+			clean ;;
+        compile)  
+			compile;;
+        run)  
+			run;;
+ 		*)  
+	      echo "`basename ${0}`:usage: [-o file name] | [clean] | [compile] | [run]"
+	      exit 1 # Command to come out of the program with status 1
+	      ;; 
+    esac
+    shift
+done
+
 echo "/****** Start Process ******/"
-flex -d --nounistd -oscannerRule.yy.cpp scannerRule.l
-bison -d -oparserRule.tab.cpp parserRule.y
+#flex -d --nounistd -oscannerRule.yy.cpp scannerRule.l
+#bison -d -oparserRule.tab.cpp parserRule.y
 
-g++ -c scannerRule.yy.cpp -o scannerRule.yy.obj
-g++ -c AST.cpp -o AST.obj
-g++ -c parserRule.tab.cpp -o parserRule.tab.obj
-g++ -o nong compiler.cpp parserRule.tab.obj scannerRule.yy.obj AST.obj
-./nong AddressBookTest1.txt
+#g++ -c scannerRule.yy.cpp -o scannerRule.yy.obj
+#g++ -c AST.cpp -o AST.obj
+#g++ -c parserRule.tab.cpp -o parserRule.tab.obj
+#g++ -o nong compiler.cpp parserRule.tab.obj scannerRule.yy.obj AST.obj
+#./nong AddressBookTest1.txt
 
-#while [ $# -gt 0 ]
-#do
-#    case "$1" in
-#    	-o)  echo "Test -o 2: "$2; shift ;;
-#        clean)  echo "clean -v : "$1;;
-#        compile)  echo "compile -b : "$1;;
-#        run)  echo "Test -run 1: "$1;
-#		echo "Test -run 2: "$2; 
-#		echo "Test -run 3: "$3; ;;
-#    esac
-#    shift
-#done
 
 echo "/****** End Process ******/"
 
