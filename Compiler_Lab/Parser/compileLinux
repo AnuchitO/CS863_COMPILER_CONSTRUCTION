@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-
+filename="compile"
 clean(){
 	echo -e "\n------------------------------------" 
 	echo    ":::: Clean ::::" 
@@ -11,19 +11,35 @@ compile(){
 	echo -e "\n------------------------------------" 
 	echo 	":::: Compile ::::" 
 	echo -e "------------------------------------\n" 
+
+	flex -d --nounistd -oscannerRule.yy.cpp scannerRule.l
+	bison -d -oparserRule.tab.cpp parserRule.y
+
+	g++ -c scannerRule.yy.cpp -o scannerRule.yy.obj
+	g++ -c AST.cpp -o AST.obj
+	g++ -c parserRule.tab.cpp -o parserRule.tab.obj
+	g++ -o $filename compiler.cpp parserRule.tab.obj scannerRule.yy.obj AST.obj
+	echo -e "------------------------------------\n" 
 }
 
 run(){
+	echo $filename
 	echo -e "\n------------------------------------" 
 	echo 	":::: RUN ::::" 
 	echo -e "------------------------------------\n" 
+	echo "/****** Start Process ******/"
+
+	./$filename AddressBookTest1.txt
+	
+	echo "/****** End Process ******/"
+	
 }
 
 while [ $# -gt 0 ]
 do
     case "$1" in
     	-o)  
-			echo "Test -run 2: "$2; shift ;;
+			filename=$2; shift ;;
         clean)  
 			clean ;;
         compile)  
@@ -38,16 +54,5 @@ do
     shift
 done
 
-echo "/****** Start Process ******/"
-#flex -d --nounistd -oscannerRule.yy.cpp scannerRule.l
-#bison -d -oparserRule.tab.cpp parserRule.y
 
-#g++ -c scannerRule.yy.cpp -o scannerRule.yy.obj
-#g++ -c AST.cpp -o AST.obj
-#g++ -c parserRule.tab.cpp -o parserRule.tab.obj
-#g++ -o nong compiler.cpp parserRule.tab.obj scannerRule.yy.obj AST.obj
-#./nong AddressBookTest1.txt
-
-
-echo "/****** End Process ******/"
 
