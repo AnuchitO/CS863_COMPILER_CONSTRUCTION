@@ -1,6 +1,7 @@
 #!/bin/bash
 clear
-filename="compile"
+file_name="compile"
+input_file_name="input.txt"
 clean(){
 	echo -e "\n------------------------------------" 
 	echo    ":::: Clean ::::" 
@@ -18,19 +19,19 @@ compile(){
 	g++ -c scannerRule.yy.cpp -o scannerRule.yy.obj
 	g++ -c AST.cpp -o AST.obj
 	g++ -c parserRule.tab.cpp -o parserRule.tab.obj
-	g++ -o $filename compiler.cpp parserRule.tab.obj scannerRule.yy.obj AST.obj
+	g++ -o $file_name compiler.cpp parserRule.tab.obj scannerRule.yy.obj AST.obj
 	echo -e "------------------------------------\n" 
 }
 
 run(){
-	echo $filename
+	echo $file_name
 	echo -e "\n------------------------------------" 
 	echo 	":::: RUN ::::" 
 	echo -e "------------------------------------\n" 
 	echo "/****** Start Process ******/"
 
-	./$filename AddressBookTest1.txt
-	
+	./$file_name $input_file_name #AddressBookTest1.txt
+
 	echo "/****** End Process ******/"
 	
 }
@@ -39,7 +40,9 @@ while [ $# -gt 0 ]
 do
     case "$1" in
     	-o)  
-			filename=$2; shift ;;
+			file_name=$2; shift ;;
+		-i)  
+			input_file_name=$2; shift ;;
         clean)  
 			clean ;;
         compile)  
