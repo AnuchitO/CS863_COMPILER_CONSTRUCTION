@@ -1,10 +1,14 @@
 #!/bin/bash
 clear
-file_name="compile"
+file_name="c.system"
 input_file_name="input.txt"
 clean(){
 	echo -e "\n------------------------------------" 
 	echo    ":::: Clean ::::" 
+	echo -e "------------------------------------\n" 
+	#rm -rf scannerRule.yy.obj;
+	#rm -rf AST.obj;
+	#rm -rf parserRule.tab.obj;
 	echo -e "------------------------------------\n" 
 }
 
@@ -24,15 +28,17 @@ compile(){
 }
 
 run(){
-	echo $file_name
 	echo -e "\n------------------------------------" 
-	echo 	":::: RUN ::::" 
+	echo 	":::: RUN ::::"
+	echo -e "file : "$file_name 
+	echo -e "input file : "$input_file_name 
 	echo -e "------------------------------------\n" 
-	echo "/****** Start Process ******/"
+	echo "/****** Start RUN ******/"
 
 	./$file_name $input_file_name #AddressBookTest1.txt
 
-	echo "/****** End Process ******/"
+	echo "/****** End RUN ******/"
+	echo -e "------------------------------------\n" 
 	
 }
 
