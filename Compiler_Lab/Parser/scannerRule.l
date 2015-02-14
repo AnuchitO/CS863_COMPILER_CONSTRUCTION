@@ -28,10 +28,10 @@ CHAR     [A-Za-z]
 "if"	{return IF;}
 
 {DIGIT}		{
-			yylval_param->num = atoi(_strdup(yytext));
+			yylval_param->num = atoi(strdup(yytext));
 			return INT;}
 [a-c|i-k|n|x|y|z]	{
-			yylval_param->charstr = _strdup(yytext);
+			yylval_param->charstr = strdup(yytext);
 			return ID;}
 
 
