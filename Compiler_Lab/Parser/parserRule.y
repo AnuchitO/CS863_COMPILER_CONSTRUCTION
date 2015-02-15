@@ -42,7 +42,7 @@ int yylex (YYSTYPE * yylval_param , yyscan_t yyscanner);
 %token COL
 %token ADD
 %token IF
-
+%token ELSE
 %%
 program 	: statement {cout << "1.statement" << endl;} 
 			| program statement {cout << "2.program statement" << endl;} 
@@ -55,7 +55,8 @@ statement 	: assignStmt {cout << "3.assignStmt" << endl;}
 assignStmt 	: ID EQ expr SEM {cout << "5.ID EQ expr SEM" << endl;}
 			;
 
-ifStmt 		: IF ORB expr CRB statement {cout << "6.IF ORB expr CRB statement" << endl;}
+ifStmt 		: IF ORB expr CRB OP statement CP {cout << "6.IF ORB expr CRB statement" << endl;}
+			| IF ORB expr CRB OP statement CP ELSE OP statement CP{cout << "7.IF ORB expr CRB statement ELSE statement" << endl;}
 			;
 
 expr 		: ID {cout << "7.ID" << endl;}

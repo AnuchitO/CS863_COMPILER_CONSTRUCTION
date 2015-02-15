@@ -2,4 +2,9 @@ AST.obj
 compiler.obj
 parserRule.tab.obj
 scannerRule.yy.obj
+compileLinux.system
+nong
+parserRule.tab.cpp
+parserRule.tab.hpp
+scannerRule.yy.cpp
 

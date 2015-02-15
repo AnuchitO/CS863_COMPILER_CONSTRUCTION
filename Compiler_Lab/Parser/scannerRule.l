@@ -16,7 +16,7 @@ CHAR     [A-Za-z]
 
 %%
 [\/\/].*[\n\r]?		{}
-[ \r\t\c] {}
+[ \n\r\t\c] {}
 ":"		{return COL;}
 "("  	{return ORB;}
 ")" 	{return CRB;}
@@ -26,6 +26,7 @@ CHAR     [A-Za-z]
 ";" 	{return SEM;}
 "+" 	{return ADD;}
 "if"	{return IF;}
+"else"	{return ELSE;}
 
 {DIGIT}		{
 			yylval_param->num = atoi(strdup(yytext));
