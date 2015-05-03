@@ -1,1 +1,9 @@
 http://gnuu.org/2009/09/18/writing-your-own-toy-compiler/
+
+128.199.73.166
+
+
+
+http://llvm.org/doxygen/classllvm_1_1Function.html
+http://eli.thegreenplace.net/2012/06/08/basic-source-to-source-transformation-with-clang
+http://llvm.org/devmtg/2013-04/krzikalla-slides.pdf
